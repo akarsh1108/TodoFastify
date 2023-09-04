@@ -1,1 +1,67 @@
-\## Start the app To start the development server run \`nx serve crud-api-fastify\`. Open your browser and navigate to http://localhost:4200/. Happy coding! ## Generate code If you happen to use Nx plugins, you can leverage code generators that might come with it. Run \`nx list\` to get a list of available plugins and whether they have generators. Then run \`nx list \` to see what generators are available. Learn more about \[Nx generators on the docs\](https://nx.dev/plugin-features/use-code-generators). ## Running tasks To execute tasks with Nx use the following syntax: \`\`\` nx <...options> \`\`\` You can also run multiple targets: \`\`\` nx run-many -t \`\`\` ..or add \`-p\` to filter specific projects \`\`\` nx run-many -t \-p \`\`\` Targets can be defined in the \`package.json\` or \`projects.json\`. Learn more \[in the docs\](https://nx.dev/core-features/run-tasks). ## Want better Editor Integration? Have a look at the \[Nx Console extensions\](https://nx.dev/nx-console). It provides autocomplete support, a UI for exploring and running tasks & generators, and more! Available for VSCode, IntelliJ and comes with a LSP for Vim users. ## Ready to deploy? Just run \`nx build demoapp\` to build the application. The build artifacts will be stored in the \`dist/\` directory, ready to be deployed. Configuration Before running the project, make sure to configure the database connection in the following file: src/app/plugin/postgres.ts. You will need to provide the correct values for the PostgreSQL database connection, including the id, password, and postgres_database. Additionally, create a table named todos in the database with the following columns: id (integer, auto-incremented) title (text) completed (boolean) dateofcreation (date) dateofcompletion (date) imagelink (text) API Endpoints Create a Todo (POST Request) http Copy code POST http://localhost:3000/todos Request Body (JSON): json Copy code { "title": "Call customer support", "completed": false, "dateOfCreation": "2023-09-04T04:49:32.613Z", "dateOfCompletion": null, "imageLink": null } Get all Todos with Not Completed Count and Sort by Date (GET Request) http Copy code GET http://localhost:3000/todos Get Todo by ID (GET Request) To retrieve a specific Todo, replace {id} in the URL with the actual Todo ID. http Copy code GET http://localhost:3000/todos/{id} Update Todo by ID (PUT Request) To update a Todo, replace {id} in the URL with the actual Todo ID. You can update the Todo properties in the request body. http Copy code PUT http://localhost:3000/todos/{id} Request Body (JSON): json Copy code { "title": "Call customer support soon", "completed": false, "dateOfCreation": "2023-09-04T04:49:32.613Z", "dateOfCompletion": null, "imageLink": null } Mark Todo as Complete (PUT Request) To mark a Todo as complete, replace {id} in the URL with the actual Todo ID. http Copy code PUT http://localhost:3000/todos/{id}/markComplete Delete a Todo by ID (DELETE Request) To delete a Todo, replace {id} in the URL with the actual Todo ID. http Copy code DELETE http://localhost:3000/todos/{id} Build and Deployment To build the application for deployment, run the following command: bash Copy code npm run build demoapp The build artifacts will be stored in the dist/ directory, ready to be deployed.
+# Getting Started with Your App
+
+To start the development server, run the following command:
+
+```bash
+nx serve crud-api-fastify
+
+Then, open your browser and navigate to http://localhost:4200/. Happy coding!
+
+
+Before running the project, make sure to configure the database connection in the following file: src/app/plugin/postgres.ts. You will need to provide the correct values for the PostgreSQL database connection, including the ID, password, and database name.
+
+Additionally, create a table named todos in the database with the following columns:
+
+id (integer, auto-incremented)
+title (text)
+completed (boolean)
+dateofcreation (date)
+dateofcompletion (date)
+imagelink (text)
+API Endpoints
+Create a Todo (POST Request)
+Endpoint: http://localhost:3000/todos
+
+Request Body (JSON):
+
+{
+  "title": "Call customer support",
+  "completed": false,
+  "dateOfCreation": "2023-09-04T04:49:32.613Z",
+  "dateOfCompletion": null,
+  "imageLink": null
+}
+
+Get all Todos with Not Completed Count and Sort by Date (GET Request)
+Endpoint: http://localhost:3000/todos
+
+Get Todo by ID (GET Request)
+To retrieve a specific Todo, replace {id} in the URL with the actual Todo ID.
+
+Endpoint: http://localhost:3000/todos/{id}
+
+Update Todo by ID (PUT Request)
+To update a Todo, replace {id} in the URL with the actual Todo ID. You can update the Todo properties in the request body.
+
+Endpoint: http://localhost:3000/todos/{id}
+
+Request Body (JSON):
+
+{
+  "title": "Call customer support soon",
+  "completed": false,
+  "dateOfCreation": "2023-09-04T04:49:32.613Z",
+  "dateOfCompletion": null,
+  "imageLink": null
+}
+
+Mark Todo as Complete (PUT Request)
+To mark a Todo as complete, replace {id} in the URL with the actual Todo ID.
+
+Endpoint: http://localhost:3000/todos/{id}/markComplete
+
+Delete a Todo by ID (DELETE Request)
+To delete a Todo, replace {id} in the URL with the actual Todo ID.
+
+Endpoint: http://localhost:3000/todos/{id}
+
